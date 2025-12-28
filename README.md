@@ -1,147 +1,81 @@
 SANS Holiday Hack Challenge 2025 – Technical Write-up
+This repository contains a technical analysis of my favorite objectives from the SANS Holiday Hack Challenge 2025. As a Master of Science in Cybersecurity student at IMT Atlantique, my focus was on applying formal methodology and logic to solve complex security puzzles.
 
-This repository contains a short technical write-up of my favourite objectives from the SANS Holiday Hack Challenge 2025.
-The focus is on how each problem was approached and which security concepts were involved.
+🚀 Overview
+The following objectives were completed by combining browser-based inspection, manual logical deduction, and pattern recognition. These challenges highlight that security is often about understanding Business Logic rather than just finding coding errors.
 
-Completed Objectives
-
-IDORable Bistro
-
-Dosis Network Down
-
-Rogue Gnome Identity Provider
-
-Quantgnome Leap
-
-Going in Reverse
-
+🛠️ Completed Objectives
 1. IDORable Bistro
-Objective
+Objective: Identify the gnome linked to a specific sushi order by analyzing the web application.
 
-Find the gnome linked to a sushi order by analyzing a web application.
+Methodology:
 
-Approach
+Utilized Browser Developer Tools to intercept network requests.
 
-Opened browser developer tools
+Identified an API endpoint that processed receipt IDs.
 
-Inspected network requests made by the page
+Observed that ID values were sequential, indicating a lack of object-level obfuscation.
 
-Found an API endpoint that accepted a receipt ID
+Performed Manual Parameter Manipulation to access receipts not intended for the current session.
 
-Noticed that the ID values were sequential numbers
-
-Changed the ID manually to access other receipts
-
-Result
-
-One receipt contained sushi-related information, which revealed the correct gnome name.
-
-Security Concept
-
-Insecure Direct Object Reference (IDOR) caused by missing access control on backend objects.
+Security Concept: Insecure Direct Object Reference (IDOR). This occurs when an application provides direct access to objects based on user-supplied input without a secondary authorization check.
 
 2. Dosis Network Down
-Objective
+Objective: Perform a root-cause analysis on a failing network service.
 
-Identify why a network service was not working correctly.
+Methodology:
 
-Approach
+Conducted behavioral analysis by observing service responses.
 
-Observed how the service responded to requests
+Compared baseline (expected) behavior against actual failing states.
 
-Compared expected behavior with actual behavior
+Used Logical Elimination to narrow down points of failure within the connection string.
 
-Looked for missing or broken connections
-
-Used logical elimination instead of automated tools
-
-Result
-
-The cause of the network issue was identified and the objective was completed.
-
-Security Concept
-
-Basic network troubleshooting and service analysis.
+Security Concept: Network Service Resilience and troubleshooting. This emphasizes the importance of visibility in complex network architectures.
 
 3. Rogue Gnome Identity Provider
-Objective
+Objective: Detect a malicious identity provider (IdP) within an authentication flow.
 
-Identify a malicious identity provider affecting authentication.
+Methodology:
 
-Approach
+Deconstructed the Authentication Handshake to see how identity tokens were trusted.
 
-Reviewed the authentication flow
+Performed a differential analysis between valid and rogue identity responses.
 
-Analyzed how identity information was trusted
+Identified inconsistencies in the verification process.
 
-Compared valid and invalid identity responses
-
-Noticed inconsistencies in identity verification
-
-Result
-
-The rogue identity provider was identified.
-
-Security Concept
-
-Authentication trust abuse and identity misconfiguration.
+Security Concept: Authentication Trust Abuse. This highlights the dangers of misconfigured Federated Identity systems.
 
 4. Quantgnome Leap
-Objective
+Objective: Retrieve a hidden flag by navigating a system through chained SSH keys.
 
-Gain access to a system using chained SSH keys and retrieve a flag.
+Methodology:
 
-Approach
+Performed lateral movement by discovering SSH keys in user home directories.
 
-Logged into multiple user accounts using SSH keys
+Used discovered credentials to pivot from low-privileged accounts to administrative accounts.
 
-Found keys stored in user home directories
+Accessed the protected file system to read the flag.
 
-Used each key to access the next account
-
-Reached an administrative account
-
-Read the flag file from the system
-
-Result
-
-The flag was retrieved and submitted successfully.
-
-Security Concept
-
-SSH key management and privilege escalation through key reuse.
+Security Concept: Privilege Escalation and SSH Key Management. This demonstrates the risk of "Credential Stuffing" or key reuse within an internal environment.
 
 5. Going in Reverse
-Objective
+Objective: Solve a system puzzle by working backward from a known output.
 
-Solve a problem by working backward from the expected output.
+Methodology:
 
-Approach
+Analyzed the final system state to determine the required input.
 
-Read the objective description carefully
+Applied Reverse Reasoning to deconstruct the system's logic steps.
 
-Focused on what the final answer needed to look like
+Security Concept: Reverse Engineering Logic. Understanding the "Expected Output" is a critical skill for debugging and identifying logic flaws.
 
-Reversed the logic step by step
+🧠 Key Takeaways
+Logic over Code: Many critical vulnerabilities stem from flawed business logic, not just syntax errors.
 
-Derived the correct input value
+Zero-Trust Client: Client-side browsers should never be trusted with sensitive data or sequential IDs.
 
-Result
+Human Persistence: Manual analysis with a web inspector is often more effective than automated tools when dealing with custom logic.
 
-The correct value was submitted and accepted.
-
-Security Concept
-
-Reverse logic and reasoning based on system behavior.
-
-Overall Lessons Learned
-
-Many security issues are logic problems, not coding errors
-
-Client-side behavior should never be trusted with sensitive data
-
-Browser developer tools are powerful for security testing
-
-Manual analysis is often required when tools show nothing
-
-Reading carefully is as important as using tools
+🎓 About the Author
+I am a DevSecOps Engineer with 2.5 years of experience at Bank of America. I am currently pursuing an MSc in Cybersecurity and seeking a Final Year Internship starting in June 2026.
