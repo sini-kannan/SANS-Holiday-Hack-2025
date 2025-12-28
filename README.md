@@ -6,16 +6,6 @@ The focus is on how each problem was approached and which security concepts were
 
 ---
 
-## Completed Objectives
-
-- IDORable Bistro  
-- Dosis Network Down  
-- Rogue Gnome Identity Provider  
-- Quantgnome Leap  
-- Going in Reverse  
-
----
-
 ## 1. IDORable Bistro
 
 ### Objective
